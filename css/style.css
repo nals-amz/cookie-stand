@@ -1,0 +1,49 @@
+/* base styles */
+a {
+  text-decoration: none;
+  color: rgb(226, 222, 220);
+}
+body {
+  background-color: rgb(148, 160, 160);
+  font-family: Arial, Helvetica, sans-serif;  
+}
+*{
+  /* outline: dotted red 2px; */
+ }
+/* site styles */
+
+header {
+  background-color: rgb(61, 23, 23);
+  height: 50px;
+}
+
+header section {
+  margin: 0 auto;
+  width: 960px;
+}
+
+header img {
+  width: 100px;
+  height: 40px;
+  float: left;
+  padding: 5px 20px 0 20px;
+}
+
+header nav li{
+  display: inline-block;
+  margin-right: 30px;
+  margin-top: 18px;
+  margin-left: 10px;
+}
+
+section {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+main {
+  width: 960px;
+  margin: 10px auto;
+}
+
+
