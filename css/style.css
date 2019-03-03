@@ -4,7 +4,7 @@ a {
   color: rgb(226, 222, 220);
 }
 body {
-  background-color: rgb(148, 160, 160);
+  background-color: rgb(167, 224, 224);
   font-family: Arial, Helvetica, sans-serif;  
 }
 *{
@@ -26,14 +26,14 @@ header img {
   width: 100px;
   height: 40px;
   float: left;
-  padding: 5px 20px 0 20px;
+  padding: 0px 0px 0px 0px;
 }
 
 header nav li{
   display: inline-block;
-  margin-right: 30px;
+  margin-right: 10px;
   margin-top: 18px;
-  margin-left: 10px;
+  margin-left: 30px;
 }
 
 section {
@@ -59,12 +59,18 @@ p {
   margin: 5px;
 }
 
-ul {
+main ul {
   list-style-type: circle;
   margin-left: 20px;
   margin-top: 10px;
 }
 
-ul li {
+main ul li {
   margin-left: 10px;
+}
+
+div#allStoreSales section{
+  width: 320px;
+  display: inline-block;
+
 }
