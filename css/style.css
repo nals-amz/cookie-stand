@@ -46,4 +46,25 @@ main {
   margin: 10px auto;
 }
 
+h1 {
+  font-size: 2em;
+}
 
+h2 {
+  font-size: 1.5em;
+  font-style: italic;
+  font-weight: 200;
+}
+p {
+  margin: 5px;
+}
+
+ul {
+  list-style-type: circle;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+ul li {
+  margin-left: 10px;
+}
