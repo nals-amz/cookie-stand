@@ -2,6 +2,7 @@
 a {
   text-decoration: none;
   color: rgb(226, 222, 220);
+  font-family: "Times New Roman", Times, serif;
 }
 body {
   background-color: rgb(167, 224, 224);
@@ -54,6 +55,7 @@ h2 {
   font-size: 1.5em;
   font-style: italic;
   font-weight: 200;
+  font-family: 'Abel';
 }
 p {
   margin: 5px;
