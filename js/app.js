@@ -1,6 +1,6 @@
 'use strict'
 
-var Store = function(name, id, avgCookiesPerCustomers, startHour, endHour, minHourlyCustomers, maxHourlyCustomers) {
+function Store(name, id, avgCookiesPerCustomers, startHour, endHour, minHourlyCustomers, maxHourlyCustomers) {
   this.name  = name;
   this.id  = id;
   this.avgCookiesPerCustomers  = avgCookiesPerCustomers;
@@ -36,23 +36,92 @@ Store.prototype.generateDaySaleDetails= function() {
   this.daySaleDetails = new DaySale(hourlySales, totalCookiesSoldPerDay);
 }
 
-var HourSale = function(hour, noOfCust, cookiesSold){
+function HourSale(hour, noOfCust, cookiesSold){
   this.hour = hour;
   this.noOfCust = noOfCust;
   this.cookiesSold = cookiesSold;
-  this.hourinAmPm = format24to12(hour)
+  this.hourInAmPm = format24to12(hour)
 }
 
-var DaySale = function(hourlySales, totalCookiesSold){
+function DaySale(hourlySales, totalCookiesSold){
   this.totalCookiesSold = totalCookiesSold;
   this.hourlySales = hourlySales;
 }
 
+/* Utility Functions*/
 
 function format24to12(timein24){
   var timeIn12 = (timein24 > 12) ? (timein24 - 12) : timein24;
   var timeAmPmStr = (timein24 >= 12) ? 'pm' : 'am';
   return timeIn12+timeAmPmStr;
+}
+
+/* HTMl Generation Functions */
+
+function makeDaySaleTable(daySaleObj){
+  var tblDaySale = document.createElement("table");
+  tblDaySale.innerHTML =  `<thead>
+                              <th>Time</th>
+                              <th>Cookies Sold</th>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                            </tfoot>`;
+  var tbodyEle = tblDaySale.getElementsByTagName('tbody')[0];
+  var hourSaleRows = makeHourSaleRows(daySaleObj.hourlySales);
+  for(var i = 0; i < hourSaleRows.length; i++){
+    tbodyEle.appendChild(hourSaleRows[i]);
+  }
+
+  var tfootEle = tblDaySale.getElementsByTagName('tfoot')[0];
+  tfootEle.innerHTML = `
+  <tr> 
+    <th>Total </th>
+    <th>${daySaleObj.totalCookiesSold}</th>
+  </tr>`;
+  return tblDaySale;
+}
+
+function makeHourSaleRows(aryHourSales){
+  var rows = [];
+  for(var i=0; i < aryHourSales.length; i++){
+    var trEleSale = document.createElement("tr");
+    var cols = makeCols(aryHourSales[i]);
+    for(var j = 0; j < cols.length; j++){
+      trEleSale.appendChild(cols[j]);
+    }
+    rows.push(trEleSale);
+  }
+  return rows;
+}
+
+function makeCols(hourSaleObj){
+  var cols = [];
+  var tdEleSaleCol1 = document.createElement("td");
+  tdEleSaleCol1.innerHTML = hourSaleObj.hourInAmPm;
+  
+  var tdEleSaleCol2 = document.createElement("td");
+  tdEleSaleCol2.innerHTML = hourSaleObj.cookiesSold;
+  cols.push(tdEleSaleCol1, tdEleSaleCol2);
+
+  return cols;
+}
+
+function renderStoreDaySales(storesAry){
+  console.log('stores', storesAry);
+  for(var i=0; i < storesAry.length; i++){
+    var store = storesAry[i];
+    store.generateDaySaleDetails();
+    var ele = document.getElementById('allStoreSales');
+    var storeSecEle = document.createElement("section");
+    storeSecEle.innerHTML = `<h2> ${store.name} </h2>`;
+    storeSecEle.id = store.id;
+  
+    storeSecEle.appendChild(makeDaySaleTable(store.daySaleDetails));
+  
+    ele.appendChild(storeSecEle);
+  }
 }
 
 var pike = new Store('1st and Pike', 'storeId1', 6.3, 6, 20, 23, 65);
@@ -62,26 +131,5 @@ var capitolHill = new Store('Capitol Hill', 'storeId4', 2.3, 6, 20, 20, 38);
 var alki = new Store('Alki', 'storeId5', 4.6, 6, 20, 2, 16);
 
 var stores = [pike, seaTacAirport, capitolHill, seattleCenter, alki];
-console.log('stores', stores);
-for(var i=0; i < stores.length; i++){
-  var store = stores[i];
-  store.generateDaySaleDetails();
-  var ele = document.getElementById('allStoreSales');
-  var storeSecEle = document.createElement("section");
-  storeSecEle.innerHTML = `<h2> ${store.name} </h2>`;
-  storeSecEle.id = store.id;
-
-  var storeSalesListEle = document.createElement("ul");
-  for(var j=0; j < store.daySaleDetails.hourlySales.length; j++){
-    var storeSalesListItemEle = document.createElement("li");
-    storeSalesListItemEle.innerHTML = `${store.daySaleDetails.hourlySales[j].hourinAmPm} :  ${store.daySaleDetails.hourlySales[j].cookiesSold} cookies`;
-    storeSalesListEle.appendChild(storeSalesListItemEle);
-  }
-  var storeSalesListItemEle = document.createElement("li");
-  storeSalesListItemEle.innerHTML = `Total:  ${store.daySaleDetails.totalCookiesSold} cookies`;
-  storeSalesListEle.appendChild(storeSalesListItemEle);
-  storeSecEle.appendChild(storeSalesListEle);
-
-  ele.appendChild(storeSecEle);
-}
+renderStoreDaySales(stores);
 

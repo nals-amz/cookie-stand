@@ -9,7 +9,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;  
 }
 *{
-  /* outline: dotted red 2px; */
+  /* outline: solid red 1px; */
  }
 /* site styles */
 
@@ -72,7 +72,37 @@ main ul li {
 }
 
 div#allStoreSales section{
-  width: 320px;
+  width: 225px;
   display: inline-block;
+  margin-right: 10px;
 
+}
+
+div#allStoreSales section h2{
+  color : blue;
+}
+
+div#allStoreSales section table{
+  overflow: auto;
+  font-size: .8em;
+}
+
+thead {
+  background: #888;
+  font-weight: bold;
+}
+
+tfoot {
+  background: rgb(196, 186, 186);
+  font-weight: bold;
+}
+
+th {
+  padding: 10px;
+  border: solid 1px black;
+}
+
+td {
+  padding: 6px;
+  border: solid 1px black;
 }
