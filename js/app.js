@@ -108,12 +108,19 @@ function makeCols(hourSaleObj){
   return cols;
 }
 
-function renderStoreDaySales(storesAry){
-  console.log('stores', storesAry);
+function generateRandomStoreSales(storesAry){
   for(var i=0; i < storesAry.length; i++){
     var store = storesAry[i];
     store.generateDaySaleDetails();
-    var ele = document.getElementById('allStoreSales');
+  }  
+}
+
+function renderStoreDaySales(storesAry){
+  console.log('stores', storesAry);
+  var ele = document.getElementById('allStoreDialySalesDetails');
+  ele.innerHTML = '<h1>Dialy Sales Details- All Stores</h1>';
+  for(var i=0; i < storesAry.length; i++){
+    var store = storesAry[i];
     var storeSecEle = document.createElement('section');
     storeSecEle.innerHTML = `<h2> ${store.name} </h2>`;
     storeSecEle.id = store.id;
@@ -124,12 +131,57 @@ function renderStoreDaySales(storesAry){
   }
 }
 
-var pike = new Store('1st and Pike', 'storeId1', 6.3, 6, 20, 23, 65);
-var seaTacAirport = new Store('SeaTac Airport', 'storeId2', 1.2, 6, 20, 3, 24);
-var seattleCenter = new Store('1st and Pike', 'storeId3', 3.7, 6, 20, 11, 38);
-var capitolHill = new Store('Capitol Hill', 'storeId4', 2.3, 6, 20, 20, 38);
-var alki = new Store('Alki', 'storeId5', 4.6, 6, 20, 2, 16);
+var storeForm =  document.getElementById('store_form');
+function storeFormData(event){
+  event.preventDefault();
+  var name = event.target.storeName.value;
+  var sid = event.target.storeId.value;
+  var avgCust = parseInt(event.target.avgCustomers.value);
+  var minCust = parseInt(event.target.minCustomers.value);
+  var maxCust = parseInt(event.target.maxCustomers.value);
+  var startHour = parseInt(event.target.startHour.value);
+  var endHour = parseInt(event.target.endHour.value);
+  
+  var newStore = new Store(name, sid, avgCust, startHour, endHour, minCust, maxCust);
+  newStore.generateDaySaleDetails();
+  stores.push(newStore);
+ 
+  renderStoreDaySales(stores);
+  createStoresSummaryTable(stores);
+  storeForm.reset();
+}
 
-var stores = [pike, seaTacAirport, capitolHill, seattleCenter, alki];
+var allStoreSalesSummary_table = document.getElementById('allStoreSalesSummary');
+function createStoresSummaryTable(storesAry) {
+  allStoreSalesSummary_table.innerHTML = '';
+  var row;
+  var allStoreTotal = 0;
+  for (var i = 0; i < storesAry.length; i++) {
+    row = document.createElement('tr');
+    row.innerHTML = '<td>' + storesAry[i].name + '</td>' +
+      '<td>' + storesAry[i].id + '</td>' +
+      '<td>' + storesAry[i].avgCookiesPerCustomers + '</td>' +
+      '<td>' + storesAry[i].startHour + '</td>' +
+      '<td>' + storesAry[i].endHour + '</td>' +
+      '<td>' + storesAry[i].minHourlyCustomers + '</td>' +
+      '<td>' + storesAry[i].maxHourlyCustomers + '</td>' +
+      '<td>' + storesAry[i].daySaleDetails.totalCookiesSold + '</td>' ;
+      allStoreSalesSummary_table.appendChild(row);
+      allStoreTotal += storesAry[i].daySaleDetails.totalCookiesSold;
+  }
+  var tfooter = allStoreSalesSummary_table.parentNode.getElementsByTagName('tfoot');
+  tfooter[0].innerHTML = '';
+  row = document.createElement('tr');
+  row.innerHTML = `<th colspan='7'>All Stores Total Sales</th> <td> ${allStoreTotal}</th>`;
+  tfooter[0].appendChild(row);
+  allStoreSalesSummary_table.parentNode.append(tfooter[0]);
+}
+
+storeForm.addEventListener('submit', storeFormData)
+
+var pike = new Store('1st and Pike', 'storeId1', 6.3, 6, 20, 23, 65);
+var stores = [pike];
+generateRandomStoreSales(stores)
 renderStoreDaySales(stores);
+createStoresSummaryTable(stores);
 
