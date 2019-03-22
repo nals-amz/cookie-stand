@@ -23,7 +23,65 @@
       </section>
     </header>
     <main>
-      <div id="allStoreSales">
+      <form id="store_form">
+        <fieldset>
+            <label for="storeName">Store Name</label>
+            <input type="text" name="storeName" placeholder="enter store name" minLength="3" required>
+        </fieldset>
+
+        <fieldset>
+            <label for="storeId">Store Id</label>
+            <input type="text" name="storeId" placeholder="enter store id" minLength="3" required>
+        </fieldset>
+
+        <fieldset>
+            <label for="avgCustomers">Average Customer</label>
+            <input type="number" name="avgCustomers" placeholder="enter average no of customers" minLength="3" required>
+        </fieldset>
+
+        <fieldset>
+            <label for="minCustomers">Minimum Hourly Customer</label>
+            <input type="number" name="minCustomers" placeholder="minimum hourly customers" minLength="3" required>
+        </fieldset>
+
+        <fieldset>
+            <label for="maxCustomers">Maximum Hourly Customer</label>
+            <input type="number" name="maxCustomers" placeholder="maximum hourly customers" minLength="3" required>
+        </fieldset>
+
+        <fieldset>
+            <label for="startHour">Store Start Hour</label>
+            <input type="number" name="startHour" placeholder="store start hour" minLength="3" value="6" required>
+        </fieldset>
+
+        <fieldset>
+            <label for="endHour">Maximum Hourly Customer</label>
+            <input type="number" name="endHour" placeholder="store end hour" minLength="3" value="20"  required>
+        </fieldset>
+
+        <button id="submit_btn" type="submit">Add Store</button>
+      </form>
+      <div>
+        <table>
+          <thead>
+            <th>Store Name</th>
+            <th>Store Id</th>
+            <th>Avg Hourly Sales</th>
+            <th>Start Hour</th>
+            <th>End Hour</th>
+            <th>Minimum Hourly Customers</th>
+            <th>Maximum Hourly Customers</th>
+            <th>Cookies Sold Today</th>
+          </thead>
+          <tbody id="allStoreSalesSummary">
+              <!-- dynamic data will be inserted here -->
+          </tbody>
+          <tfoot>
+
+          </tfoot>
+        </table>
+      </div>
+      <div id="allStoreDialySalesDetails">
        
       <div>
     </main>
