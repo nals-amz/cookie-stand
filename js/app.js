@@ -112,7 +112,7 @@ function generateRandomStoreSales(storesAry){
   for(var i=0; i < storesAry.length; i++){
     var store = storesAry[i];
     store.generateDaySaleDetails();
-  }  
+  }
 }
 
 function renderStoreDaySales(storesAry){
@@ -141,11 +141,11 @@ function storeFormData(event){
   var maxCust = parseInt(event.target.maxCustomers.value);
   var startHour = parseInt(event.target.startHour.value);
   var endHour = parseInt(event.target.endHour.value);
-  
+
   var newStore = new Store(name, sid, avgCust, startHour, endHour, minCust, maxCust);
   newStore.generateDaySaleDetails();
   stores.push(newStore);
- 
+
   renderStoreDaySales(stores);
   createStoresSummaryTable(stores);
   storeForm.reset();
@@ -166,8 +166,8 @@ function createStoresSummaryTable(storesAry) {
       '<td>' + storesAry[i].minHourlyCustomers + '</td>' +
       '<td>' + storesAry[i].maxHourlyCustomers + '</td>' +
       '<td>' + storesAry[i].daySaleDetails.totalCookiesSold + '</td>' ;
-      allStoreSalesSummary_table.appendChild(row);
-      allStoreTotal += storesAry[i].daySaleDetails.totalCookiesSold;
+    allStoreSalesSummary_table.appendChild(row);
+    allStoreTotal += storesAry[i].daySaleDetails.totalCookiesSold;
   }
   var tfooter = allStoreSalesSummary_table.parentNode.getElementsByTagName('tfoot');
   tfooter[0].innerHTML = '';
@@ -177,11 +177,11 @@ function createStoresSummaryTable(storesAry) {
   allStoreSalesSummary_table.parentNode.append(tfooter[0]);
 }
 
-storeForm.addEventListener('submit', storeFormData)
+storeForm.addEventListener('submit', storeFormData);
 
 var pike = new Store('1st and Pike', 'storeId1', 6.3, 6, 20, 23, 65);
 var stores = [pike];
-generateRandomStoreSales(stores)
+generateRandomStoreSales(stores);
 renderStoreDaySales(stores);
 createStoresSummaryTable(stores);
 

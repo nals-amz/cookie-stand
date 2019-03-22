@@ -87,9 +87,13 @@ div#allStoreDialySalesDetails section table{
   font-size: .8em;
 }
 
+tbody {
+  font-size: .8em;
+}
 thead {
   background: #888;
   font-weight: bold;
+  font-size: .8em;
 }
 
 tfoot {
@@ -109,7 +113,12 @@ td {
 
 
 fieldset {
-  padding: 10px;
+  padding: 10px 10px 0 0;
+  width: 600px;
+}
+
+fieldset label{
+  padding: 5px;
 }
 
 input[type="text"] {
@@ -117,6 +126,15 @@ input[type="text"] {
   padding: 5px;
   border-radius: 3px;
   width: 50%;
+  float: right;
+}
+
+input[type="number"] {
+  border: solid 1px black;
+  padding: 5px;
+  border-radius: 3px;
+  width: 50%;
+  float: right;
 }
 
 button {
@@ -126,8 +144,12 @@ button {
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  margin-bottom: 50px;
-  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 290px;
+  width: 150px;
+  height: 30px;
+  font-size: medium;
 }
 
 form {
@@ -138,3 +160,4 @@ form {
 div {
   margin-bottom: 20px;
 }
+
