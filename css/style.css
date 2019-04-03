@@ -45,6 +45,7 @@ section {
 main {
   width: 960px;
   margin: 10px auto;
+  min-height: 650px;
 }
 
 h1 {
@@ -75,6 +76,7 @@ div#allStoreDialySalesDetails section{
   width: 225px;
   display: inline-block;
   margin-right: 10px;
+  height: auto;
 
 }
 
@@ -161,3 +163,68 @@ div {
   margin-bottom: 20px;
 }
 
+
+.family-image {
+  width: 960px;
+}
+
+main section{
+  margin-top:  10px;
+}
+
+main section h2{
+  margin-bottom:  10px;
+}
+#merchandise img {
+  width: 220px;
+  height: 200px;
+  margin-right: 15px;
+}
+
+section#locations {
+  height: 300px;
+  display: block;
+}
+section#locations div{
+  border: 1px solid;
+  display: inline-block;
+  padding: 10px;
+  width: 200px;
+  border-radius: 10px;
+  height: 200px;
+  float: left;
+  margin-right: 10px;
+}
+section#locations div h3{
+  font-weight: bold;
+  margin-bottom: 5px; 
+}
+/* main img {
+  width: 100px;
+  height: 40px;
+  float: left;
+  padding: 0px 0px 0px 0px;
+} */
+
+main section:first-of-type{
+  margin-bottom: 10px;
+  height: 120px;
+}
+
+main section:first-of-type img{
+  float: left;
+  margin-right:15px;
+  width: 200px;
+  height: 100px;
+}
+
+section#events a{
+  color: blue;
+  text-decoration-line: underline;
+}
+
+footer{
+  background-color: #888;
+  height: 100px;
+  padding: 20px;
+}
