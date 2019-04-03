@@ -45,6 +45,7 @@ section {
 main {
   width: 960px;
   margin: 10px auto;
+  min-height: 650px;
 }
 
 h1 {
@@ -75,6 +76,7 @@ div#allStoreDialySalesDetails section{
   width: 225px;
   display: inline-block;
   margin-right: 10px;
+  height: auto;
 
 }
 
@@ -179,6 +181,10 @@ main section h2{
   margin-right: 15px;
 }
 
+section#locations {
+  height: 300px;
+  display: block;
+}
 section#locations div{
   border: 1px solid;
   display: inline-block;
@@ -215,4 +221,10 @@ main section:first-of-type img{
 section#events a{
   color: blue;
   text-decoration-line: underline;
+}
+
+footer{
+  background-color: #888;
+  height: 100px;
+  padding: 20px;
 }
