@@ -53,19 +53,49 @@
             <input type="number" name="maxCustomers" placeholder="maximum hourly customers" minLength="3" required>
         </fieldset>
 
-        <fieldset>
+        <!-- <fieldset>
             <label for="startHour">Store Start Hour</label>
             <input type="number" name="startHour" placeholder="store start hour" minLength="3" value="6" required>
         </fieldset>
 
         <fieldset>
-            <label for="endHour">Maximum Hourly Customer</label>
+            <label for="endHour">Store End Customer</label>
             <input type="number" name="endHour" placeholder="store end hour" minLength="3" value="20"  required>
-        </fieldset>
+        </fieldset> -->
 
         <button id="submit_btn" type="submit">Add Store</button>
       </form>
       <div>
+        <table>
+          <thead>
+            <th></th>
+            <th>6am</th>
+            <th>7am</th>
+            <th>8am</th>
+            <th>9am</th>
+            <th>10am</th>
+            <th>11am</th>
+            <th>12am</th>
+            <th>1pm</th>
+            <th>2pm</th>
+            <th>3pm</th>
+            <th>4pm</th>
+            <th>5pm</th>
+            <th>6pm</th>
+            <th>7pm</th>
+            <th>8pm</th>
+            <th>Total Cookies</th>
+          </thead>
+          <tbody id="rowsData">
+              <!-- dynamic data will be inserted here -->
+          </tbody>
+          <tfoot id="hourlyTotals">
+
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- <div>
         <table>
           <thead>
             <th>Store Name</th>
@@ -78,7 +108,6 @@
             <th>Cookies Sold Today</th>
           </thead>
           <tbody id="allStoreSalesSummary">
-              <!-- dynamic data will be inserted here -->
           </tbody>
           <tfoot>
 
@@ -87,7 +116,7 @@
       </div>
       <div id="allStoreDialySalesDetails">
        
-      <div>
+      <div> -->
     </main>
     <footer>
         &copy;Salmon Cookies Inc
